@@ -1,16 +1,12 @@
 # k8s-hashicorp-vault-agent-nginx-web
 
-Guide to:
-
-1. Deploy a local development Vault Server
+1. Deploy a local development Vault Server inside Kubernetes
 2. Configure Vault for PKI certificate management (self-signed)
-3. Use Vault Agent to write certificates to a file for applications/NGINX to use.
+3. Use Vault Agent to write certificates to a shared location to be used by NGINX as SSL/TLS certificate.
 
 Pre-requisites:
 1. Kubernetes Cluster
 2. Helm
-
-
 
 
 Run Vault on Kubernetes is via Helm chart.
