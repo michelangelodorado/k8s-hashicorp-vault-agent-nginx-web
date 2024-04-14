@@ -128,23 +128,23 @@ Apply the deployment & service defined in `nginx-vault.yaml`
 kubectl apply -f nginx-vault.yaml
 ```
 
-- vault.hashicorp.com/agent-image: hashicorp/vault:1.5.0
+- vault.hashicorp.com/agent-image: hashicorp/vault:1.5.0 : Name of the Vault docker image to use. This value overrides the default image configured in the injector and is usually not needed. Defaults to **hashicorp/vault:1.16.1**
 - vault.hashicorp.com/agent-inject: 'true' : configures whether injection is explicitly enabled or disabled for a pod. This should be set to a true or false value.
-vault.hashicorp.com/role: 'internal-app'
-vault.hashicorp.com/agent-inject-secret-tls.crt: 'pki/issue/2024-servers'
-vault.hashicorp.com/agent-inject-secret-tls.key: 'pki/issue/2024-servers'
-vault.hashicorp.com/agent-inject-template-tls.crt: |
+- vault.hashicorp.com/role: 'internal-app' : configures the Vault role used by the Vault Agent auto-auth method. Required when vault.hashicorp.com/agent-configmap is not set.
+- vault.hashicorp.com/agent-inject-secret-tls.crt: 'pki/issue/2024-servers' : configures Vault Agent to retrieve the secrets from Vault required by the container. The name of the secret is any unique string after vault.hashicorp.com/agent-inject-secret-, such as vault.hashicorp.com/agent-inject-secret-foobar. The value is the path in Vault where the secret is located.
+- vault.hashicorp.com/agent-inject-secret-tls.key: 'pki/issue/2024-servers' : configures Vault Agent to retrieve the secrets from Vault required by the container. The name of the secret is any unique string after vault.hashicorp.com/agent-inject-secret-, such as vault.hashicorp.com/agent-inject-secret-foobar. The value is the path in Vault where the secret is located.
+- vault.hashicorp.com/agent-inject-template-tls.crt: |
   {{- with secret "pki/issue/2024-servers" "common_name=myserver.example.com" "ttl=72h" -}}
   {{ .Data.certificate }}
   {{ range .Data.ca_chain}}
   {{ . }}
   {{ end }}
   {{- end }}
-vault.hashicorp.com/agent-inject-template-tls.key: |
+- vault.hashicorp.com/agent-inject-template-tls.key: |
   {{- with secret "pki/issue/2024-servers" "common_name=myserver.example.com" "ttl=72h" -}}
   {{ .Data.private_key }}
   {{- end }}
-vault.hashicorp.com/secret-volume-path: /etc/secrets
+- vault.hashicorp.com/secret-volume-path: /etc/secrets
 
 
 References:
