@@ -6,7 +6,7 @@
 
 Pre-requisites:
 1. Kubernetes Cluster
-2. Helm
+2. kubectl, Helm
 
 
 Run Vault on Kubernetes is via Helm chart.
