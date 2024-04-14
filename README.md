@@ -128,6 +128,7 @@ Apply the deployment & service defined in `nginx-vault.yaml`
 kubectl apply -f nginx-vault.yaml
 ```
 
+
 ## Notes on Vault Agent Injector Annotations
 
 ```
@@ -163,15 +164,21 @@ vault.hashicorp.com/agent-inject-template-tls.crt: |
   {{ end }}
   {{- end }}
 ```
+configures the template Vault Agent should use for rendering a secret. The name of the template is any unique string after vault.hashicorp.com/agent-inject-template-, such as vault.hashicorp.com/agent-inject-template-foobar. This should map to the same unique value provided in vault.hashicorp.com/agent-inject-secret-. If not provided, a default generic template is used.
+
 ```
 vault.hashicorp.com/agent-inject-template-tls.key: |
   {{- with secret "pki/issue/2024-servers" "common_name=myserver.example.com" "ttl=72h" -}}
   {{ .Data.private_key }}
   {{- end }}
 ```
+configures the template Vault Agent should use for rendering a secret. The name of the template is any unique string after vault.hashicorp.com/agent-inject-template-, such as vault.hashicorp.com/agent-inject-template-foobar. This should map to the same unique value provided in vault.hashicorp.com/agent-inject-secret-. If not provided, a default generic template is used.
+
 ```
 vault.hashicorp.com/secret-volume-path: /etc/secrets
 ```
+configures where on the filesystem a secret will be rendered. To map a path to a specific secret, use the same unique secret name: vault.hashicorp.com/secret-volume-path-SECRET-NAME. For example, if a secret annotation vault.hashicorp.com/agent-inject-secret-foobar is configured, vault.hashicorp.com/secret-volume-path-foobar would configure where that secret is rendered. If no secret name is provided, this sets the default for all rendered secrets in the pod.
+
 
 References:
 - https://developer.hashicorp.com/vault/docs/platform/k8s/injector/annotations
