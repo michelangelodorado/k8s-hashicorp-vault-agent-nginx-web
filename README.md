@@ -128,6 +128,13 @@ Apply the deployment & service defined in `nginx-vault.yaml`
 kubectl apply -f nginx-vault.yaml
 ```
 
+Check the `EXTERNAL-IP` of the `nginxsvc` service
+
+```shell
+kubectl get svc
+```
+
+Access the NGINX Web App via `https://<EXTERNAL-IP>/` and you should see the vault generated certificate is used by the application.
 
 ## Notes on Vault Agent Injector Annotations
 
