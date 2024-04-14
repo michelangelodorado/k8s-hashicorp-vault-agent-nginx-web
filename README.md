@@ -128,8 +128,7 @@ Apply the deployment & service defined in `nginx-vault.yaml`
 kubectl apply -f nginx-vault.yaml
 ```
 
-##Notes on Vault Agent Injector Annotations
-
+## Notes on Vault Agent Injector Annotations
 
 ```
 vault.hashicorp.com/agent-image: hashicorp/vault:1.5.0
