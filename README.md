@@ -128,6 +128,25 @@ Apply the deployment & service defined in `nginx-vault.yaml`
 kubectl apply -f nginx-vault.yaml
 ```
 
+vault.hashicorp.com/agent-image: hashicorp/vault:1.5.0
+vault.hashicorp.com/agent-inject: 'true'
+vault.hashicorp.com/role: 'internal-app'
+vault.hashicorp.com/agent-inject-secret-tls.crt: 'pki/issue/2024-servers'
+vault.hashicorp.com/agent-inject-secret-tls.key: 'pki/issue/2024-servers'
+vault.hashicorp.com/agent-inject-template-tls.crt: |
+  {{- with secret "pki/issue/2024-servers" "common_name=myserver.example.com" "ttl=72h" -}}
+  {{ .Data.certificate }}
+  {{ range .Data.ca_chain}}
+  {{ . }}
+  {{ end }}
+  {{- end }}
+vault.hashicorp.com/agent-inject-template-tls.key: |
+  {{- with secret "pki/issue/2024-servers" "common_name=myserver.example.com" "ttl=72h" -}}
+  {{ .Data.private_key }}
+  {{- end }}
+vault.hashicorp.com/secret-volume-path: /etc/secrets
+
+
 References:
 - https://developer.hashicorp.com/vault/docs/platform/k8s/injector/annotations
 - https://developer.hashicorp.com/vault/tutorials/kubernetes/kubernetes-sidecar
