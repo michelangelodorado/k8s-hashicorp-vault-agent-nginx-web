@@ -84,5 +84,9 @@ kubectl create sa internal-app
 ```
 
 ```shell
+kubectl create configmap nginxconfigmap --from-file=default.conf
+```
+
+```shell
 kubectl apply -f nginx-vault.yaml
 ```
