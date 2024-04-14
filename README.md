@@ -1,5 +1,9 @@
 # k8s-hashicorp-vault-agent-nginx-web
 
+![image](https://github.com/michelangelodorado/k8s-hashicorp-vault-agent-nginx-web/assets/102953584/83912ebb-93e0-42ca-94fe-577bda6575e4)
+
+In this tutorial, we’ll set up Vault and the injector service with the Vault Helm chart. Then, we’ll deploy some apps to show how the injector service handles secrets
+
 1. Deploy a local development Vault Server inside Kubernetes
 2. Configure Vault for PKI certificate management (self-signed)
 3. Use Vault Agent to write certificates to a shared location to be used by NGINX as SSL/TLS certificate.
