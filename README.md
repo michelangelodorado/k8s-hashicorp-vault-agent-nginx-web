@@ -33,7 +33,7 @@ Install the latest version of the Vault server running in development mode.
 ```
 
 The Vault pod and Vault Agent Injector pod will be deployed in the default namespace.
-The 'vault-0' pod runs a Vault server in development mode. The 'vault-agent-injector' pod performs the injection based on the annotations present or patched on a deployment.
+The `vault-0` pod runs a Vault server in development mode. The `vault-agent-injector` pod performs the injection based on the annotations present or patched on a deployment.
 
 ```shell
 kubectl exec -it vault-0 -- /bin/sh
