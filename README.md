@@ -50,3 +50,31 @@ vault write pki/config/urls \
      issuing_certificates="$VAULT_ADDR/v1/pki/ca" \
      crl_distribution_points="$VAULT_ADDR/v1/pki/crl"
 ```
+
+```shell
+vault auth enable kubernetes
+```
+
+```shell
+vault write auth/kubernetes/config \
+      kubernetes_host="https://$KUBERNETES_PORT_443_TCP_ADDR:443"
+```
+
+```shell
+vault policy write internal-app - <<EOF
+path "pki/issue/2024-servers" {
+   capabilities = ["read", "create"]
+}
+EOF
+```
+
+```shell
+vault write auth/kubernetes/role/internal-app \
+      bound_service_account_names=internal-app \
+      bound_service_account_namespaces=default \
+      policies=internal-app \
+      ttl=24h
+```
+```shell
+exit
+```
