@@ -197,3 +197,4 @@ References:
 - https://www.hashicorp.com/blog/certificate-management-with-vault
 - https://developer.hashicorp.com/vault/tutorials/secrets-management/pki-engine
 - https://8gwifi.org/docs/kube-nginx.jsp
+- https://medium.com/@seifeddinerajhi/securely-inject-secrets-to-pods-with-the-vault-agent-injector-3238eb774342
