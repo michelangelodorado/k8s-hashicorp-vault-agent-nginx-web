@@ -127,3 +127,10 @@ Apply the deployment & service defined in `nginx-vault.yaml`
 ```shell
 kubectl apply -f nginx-vault.yaml
 ```
+
+References:
+https://developer.hashicorp.com/vault/docs/platform/k8s/injector/annotations
+https://developer.hashicorp.com/vault/tutorials/kubernetes/kubernetes-sidecar
+https://www.hashicorp.com/blog/certificate-management-with-vault
+https://developer.hashicorp.com/vault/tutorials/secrets-management/pki-engine
+https://8gwifi.org/docs/kube-nginx.jsp
