@@ -10,20 +10,30 @@ Pre-requisites:
 1. Kubernetes Cluster
 2. Helm
 
-Note: This are all tested using macOS
 
+
+
+Run Vault on Kubernetes is via Helm chart.
+Add the HashiCorp Helm repository.
 
 ```shell
 helm repo add hashicorp https://helm.releases.hashicorp.com
 ```
 
+Update all the repositories to ensure helm is aware of the latest versions.
+
 ```shell
  helm repo update
 ```
 
+Install the latest version of the Vault server running in development mode.
+
 ```shell
  helm install vault hashicorp/vault --set "server.dev.enabled=true"
 ```
+
+The Vault pod and Vault Agent Injector pod will be deployed in the default namespace.
+The 'vault-0' pod runs a Vault server in development mode. The 'vault-agent-injector' pod performs the injection based on the annotations present or patched on a deployment.
 
 ```shell
 kubectl exec -it vault-0 -- /bin/sh
