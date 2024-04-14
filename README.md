@@ -84,7 +84,7 @@ vault write auth/kubernetes/config \
       kubernetes_host="https://$KUBERNETES_PORT_443_TCP_ADDR:443"
 ```
 
-Write out the policy named internal-app that enables the read and create capability for secrets at path pki/issue/2024-servers.
+Write out the policy named `internal-app` that enables the read and create capability for secrets at path pki/issue/2024-servers.
 
 ```shell
 vault policy write internal-app - <<EOF
@@ -94,7 +94,7 @@ path "pki/issue/2024-servers" {
 EOF
 ```
 
-Create a Kubernetes authentication role named internal-app.
+Create a Kubernetes authentication role named `internal-app`.
 
 ```shell
 vault write auth/kubernetes/role/internal-app \
@@ -104,25 +104,25 @@ vault write auth/kubernetes/role/internal-app \
       ttl=24h
 ```
 
-Exit the vault-0 pod.
+Exit the `vault-0` pod.
 
 ```shell
 exit
 ```
 
-Create a Kubernetes service account named internal-app in the default namespace.
+Create a Kubernetes service account named `internal-app` in the default namespace.
 
 ```shell
 kubectl create sa internal-app
 ```
 
-Create configmap for nginx default.conf file
+Create configmap for nginx `default.conf` file
 
 ```shell
 kubectl create configmap nginxconfigmap --from-file=default.conf
 ```
 
-Apply the deployment & service defined in nginx-vault.yaml
+Apply the deployment & service defined in `nginx-vault.yaml`
 
 ```shell
 kubectl apply -f nginx-vault.yaml
