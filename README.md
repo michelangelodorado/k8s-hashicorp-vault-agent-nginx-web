@@ -78,3 +78,11 @@ vault write auth/kubernetes/role/internal-app \
 ```shell
 exit
 ```
+
+```shell
+kubectl create sa internal-app
+```
+
+```shell
+kubectl apply -f nginx-vault.yaml
+```
