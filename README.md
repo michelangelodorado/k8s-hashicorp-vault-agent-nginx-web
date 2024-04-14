@@ -128,8 +128,8 @@ Apply the deployment & service defined in `nginx-vault.yaml`
 kubectl apply -f nginx-vault.yaml
 ```
 
-vault.hashicorp.com/agent-image: hashicorp/vault:1.5.0
-vault.hashicorp.com/agent-inject: 'true'
+- vault.hashicorp.com/agent-image: hashicorp/vault:1.5.0
+- vault.hashicorp.com/agent-inject: 'true' : configures whether injection is explicitly enabled or disabled for a pod. This should be set to a true or false value.
 vault.hashicorp.com/role: 'internal-app'
 vault.hashicorp.com/agent-inject-secret-tls.crt: 'pki/issue/2024-servers'
 vault.hashicorp.com/agent-inject-secret-tls.key: 'pki/issue/2024-servers'
