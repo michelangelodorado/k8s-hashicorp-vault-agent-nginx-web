@@ -47,9 +47,9 @@ spec:
             {{ .Data.private_key }}
             {{- end }}
         vault.hashicorp.com/secret-volume-path: /etc/secrets
-        vault.hashicorp.com/agent-inject-command-tls.key: /bin/sh -c 'kubectl create
-          secret tls lb1-az1-test.pru.intranet.asia --key /etc/secrets/tls.key
-          --cert /etc/secrets/tls.crt --dry-run -o yaml | kubectl apply -f -'
+        # vault.hashicorp.com/agent-inject-command-tls.key: /bin/sh -c 'kubectl create
+        #  secret tls lb1-az1-test.pru.intranet.asia --key /etc/secrets/tls.key
+        #  --cert /etc/secrets/tls.crt --dry-run -o yaml | kubectl apply -f -'
     spec:
       serviceAccountName: internal-app
       volumes:
