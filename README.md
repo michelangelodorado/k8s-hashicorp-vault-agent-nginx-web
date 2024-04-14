@@ -134,7 +134,7 @@ Check the `EXTERNAL-IP` of the `nginxsvc` service
 kubectl get svc
 ```
 
-Access the NGINX Web App via `https://<EXTERNAL-IP>/` and you should see the vault generated certificate is used by the application.
+Access the NGINX Web Application using web browser `https://<EXTERNAL-IP>/` and you should see the vault generated certificate is used by the application.
 
 ## Notes on Vault Agent Injector Annotations
 
