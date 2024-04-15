@@ -54,6 +54,8 @@ Method: **Token**
 
 Token: **root**
 
+---
+
 Start an interactive shell session on the `vault-0` pod.
 
 ```shell
