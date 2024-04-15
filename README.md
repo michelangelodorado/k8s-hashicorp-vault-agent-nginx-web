@@ -37,6 +37,10 @@ Install the latest version of the Vault server running in development mode.
 The Vault pod and Vault Agent Injector pod will be deployed in the default namespace.
 The `vault-0` pod runs a Vault server in development mode. The `vault-agent-injector` pod performs the injection based on the annotations present or patched on a deployment.
 
+> [!NOTE]
+> Check the Kubernetes service of Vault; if it is set to NodePort, you can change it to type LoadBalancer.
+
+
 Start an interactive shell session on the `vault-0` pod.
 
 ```shell
