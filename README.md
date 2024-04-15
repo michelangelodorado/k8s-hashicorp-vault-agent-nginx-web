@@ -2,7 +2,7 @@
 
 ![image](https://github.com/michelangelodorado/k8s-hashicorp-vault-agent-nginx-web/assets/102953584/83912ebb-93e0-42ca-94fe-577bda6575e4)
 
-We'll set up Vault and the injector service using the Vault Helm chart. Then, we'll deploy an HTTPS web app (using NGINX) to demonstrate how the injector service handles secrets and certificates.
+We'll set up Vault and the injector service using Vault Helm chart. Then, we'll deploy an HTTPS web app (using NGINX) to demonstrate how the injector service handles secrets and certificates.
 
 In detail:
 
