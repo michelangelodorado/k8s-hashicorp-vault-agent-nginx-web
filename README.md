@@ -50,8 +50,9 @@ kubectl edit svc vault
 
 Once you've changed it to LoadBalancer, you can access the Vault Portal via `http://<EXTERNAL-IP>:8200/`
 
-Method: Token
-Token: root
+Method: **Token**
+
+Token: **root**
 
 Start an interactive shell session on the `vault-0` pod.
 
