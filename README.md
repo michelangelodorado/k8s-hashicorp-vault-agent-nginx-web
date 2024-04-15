@@ -163,6 +163,8 @@ Access the NGINX Web Application using web browser `https://<EXTERNAL-IP>/` and 
 
 ## Notes on Vault Agent Injector Annotations
 
+Check the yaml file `nginx-vault.yaml`, you will see Vault agent annotations that was configured. Below are the descriptions of each annotation.
+
 ```
 vault.hashicorp.com/agent-image: hashicorp/vault:1.5.0
 ```
