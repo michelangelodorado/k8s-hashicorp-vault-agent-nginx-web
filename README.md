@@ -173,21 +173,25 @@ Name of the Vault docker image to use. This value overrides the default image co
 ```
 vault.hashicorp.com/agent-inject: 'true'
 ```
-configures whether injection is explicitly enabled or disabled for a pod. This should be set to a true or false value.
+
+When set to true, this instruct the `Vault Agent Injector pod` to automatically inject Vault Agent containers into the Pod that is being deployed which includes this annotation. This enables applications running in Kubernetes to seamlessly access secrets stored in HashiCorp Vault.
+
 ```
 vault.hashicorp.com/role: 'internal-app'
 ```
-configures the Vault role used by the Vault Agent auto-auth method. Required when vault.hashicorp.com/agent-configmap is not set.
+This configures the Vault role used by the Vault Agent auto-auth method. This is the auth role we created earlier inside `vault-0` pod. Required when vault.hashicorp.com/agent-configmap is not set.
 ```
 vault.hashicorp.com/agent-inject-secret-tls.crt: 'pki/issue/2024-servers'
 ```
-configures Vault Agent to retrieve the secrets from Vault required by the container. The name of the secret is any unique string after vault.hashicorp.com/agent-inject-secret-, such as 
-vault.hashicorp.com/agent-inject-secret-foobar. The value is the path in Vault where the secret is located.
+This configures Vault Agent to retrieve the secrets from Vault server that is required by the container. The name of the secret is any unique string after vault.hashicorp.com/agent-inject-secret-, such as 
+vault.hashicorp.com/agent-inject-secret-tls.crt. The value is the path in Vault server where the secret is located. On this scenario, I'm retireving the tls.crt file created by the `agent-inject-template-` annotation.
 
 ```
 vault.hashicorp.com/agent-inject-secret-tls.key: 'pki/issue/2024-servers'
 ```
-configures Vault Agent to retrieve the secrets from Vault required by the container. The name of the secret is any unique string after vault.hashicorp.com/agent-inject-secret-, such as vault.hashicorp.com/agent-inject-secret-foobar. The value is the path in Vault where the secret is located.
+
+This configures Vault Agent to retrieve the secrets from Vault server that is required by the container. The name of the secret is any unique string after vault.hashicorp.com/agent-inject-secret-, such as 
+vault.hashicorp.com/agent-inject-secret-tls.key. The value is the path in Vault server where the secret is located. On this scenario, I'm retireving the tls.key file created by the `agent-inject-template-` annotation.
 
 ```
 vault.hashicorp.com/agent-inject-template-tls.crt: |
@@ -198,7 +202,7 @@ vault.hashicorp.com/agent-inject-template-tls.crt: |
   {{ end }}
   {{- end }}
 ```
-configures the template Vault Agent should use for rendering a secret. The name of the template is any unique string after vault.hashicorp.com/agent-inject-template-, such as vault.hashicorp.com/agent-inject-template-foobar. This should map to the same unique value provided in vault.hashicorp.com/agent-inject-secret-. If not provided, a default generic template is used.
+This configures the template Vault Agent should use for rendering/writing a secret. The name of the template is any unique string after vault.hashicorp.com/agent-inject-template-, such as vault.hashicorp.com/agent-inject-template-tls.crt. This should map to the same unique value provided in vault.hashicorp.com/agent-inject-secret-. For this case, I'm creating a secret/certificate on the path `pki/issue/2024-servers` with a common name of `myserver.example.com`. The template then extracts, the certificate base64 data. See reference: [https://developer.hashicorp.com/vault/docs/agent-and-proxy/agent/template](https://developer.hashicorp.com/vault/docs/agent-and-proxy/agent/template). 
 
 ```
 vault.hashicorp.com/agent-inject-template-tls.key: |
