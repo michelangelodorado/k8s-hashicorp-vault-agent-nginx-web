@@ -210,12 +210,13 @@ vault.hashicorp.com/agent-inject-template-tls.key: |
   {{ .Data.private_key }}
   {{- end }}
 ```
-configures the template Vault Agent should use for rendering a secret. The name of the template is any unique string after vault.hashicorp.com/agent-inject-template-, such as vault.hashicorp.com/agent-inject-template-foobar. This should map to the same unique value provided in vault.hashicorp.com/agent-inject-secret-. If not provided, a default generic template is used.
+
+Same with above, this is used to rendering/writing a secret. The name of the template is any unique string after vault.hashicorp.com/agent-inject-template-, such as vault.hashicorp.com/agent-inject-template-tls.key. This should map to the same unique value provided in vault.hashicorp.com/agent-inject-secret-. For this case, I'm creating a secret/certificate on the path `pki/issue/2024-servers` with a common name of `myserver.example.com`. The template then extracts, the private key base64 data. See reference: [https://developer.hashicorp.com/vault/docs/agent-and-proxy/agent/template](https://developer.hashicorp.com/vault/docs/agent-and-proxy/agent/template). 
 
 ```
 vault.hashicorp.com/secret-volume-path: /etc/secrets
 ```
-configures where on the filesystem a secret will be rendered. To map a path to a specific secret, use the same unique secret name: vault.hashicorp.com/secret-volume-path-SECRET-NAME. For example, if a secret annotation vault.hashicorp.com/agent-inject-secret-foobar is configured, vault.hashicorp.com/secret-volume-path-foobar would configure where that secret is rendered. If no secret name is provided, this sets the default for all rendered secrets in the pod.
+This configures where on the filesystem (The containers inside the pod which includes NGINX and Vault Agent in this case) a secret will be rendered. To map a path to a specific secret, use the same unique secret name: vault.hashicorp.com/secret-volume-path-SECRET-NAME. For example, if a secret annotation vault.hashicorp.com/agent-inject-secret-foobar is configured, vault.hashicorp.com/secret-volume-path-foobar would configure where that secret is rendered. If no secret name is provided, this sets the default for all rendered secrets in the pod. In this scenario, I set all rendered secrets to store in location `/etc/secrets` so I should see both `tls.crt` and `tls.key`.
 
 
 References:
@@ -225,3 +226,4 @@ References:
 - https://developer.hashicorp.com/vault/tutorials/secrets-management/pki-engine
 - https://8gwifi.org/docs/kube-nginx.jsp
 - https://medium.com/@seifeddinerajhi/securely-inject-secrets-to-pods-with-the-vault-agent-injector-3238eb774342
+- https://developer.hashicorp.com/vault/docs/agent-and-proxy/agent/template
