@@ -220,7 +220,7 @@ vault.hashicorp.com/secret-volume-path: /etc/secrets
 ```
 This configures where on the filesystem (filesystem of the containers within the pod, which include NGINX web app and Vault Agent in this case) a secret will be rendered. To map a path to a specific secret, use the same unique secret name: vault.hashicorp.com/secret-volume-path-SECRET-NAME. For example, if a secret annotation vault.hashicorp.com/agent-inject-secret-foobar is configured, vault.hashicorp.com/secret-volume-path-foobar would specify where that secret is rendered. If no secret name is provided, this sets the default for all rendered secrets in the pod. In this scenario, I've set all rendered secrets to be stored in the location /etc/secrets, so I should see both tls.crt and tls.key there.
 
-
+---
 **References:**
 - https://developer.hashicorp.com/vault/docs/platform/k8s/injector/annotations
 - https://developer.hashicorp.com/vault/tutorials/kubernetes/kubernetes-sidecar
