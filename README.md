@@ -168,7 +168,7 @@ Check the yaml file `nginx-vault.yaml`, you will see Vault agent annotations tha
 ```
 vault.hashicorp.com/agent-image: hashicorp/vault:1.5.0
 ```
-Name of the Vault docker image to use. This value overrides the default image configured in the injector and is usually not needed. Defaults to **hashicorp/vault:1.16.1**
+Name of the Vault docker image to use. This value overrides the default image configured in the injector and is usually not needed. Defaults to **hashicorp/vault:1.16.1**. I used version 1.5.0 for my testing but you can use the latest default version.
 
 ```
 vault.hashicorp.com/agent-inject: 'true'
