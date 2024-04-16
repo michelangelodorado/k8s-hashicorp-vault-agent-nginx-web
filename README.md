@@ -38,7 +38,7 @@ The Vault pod and Vault Agent Injector pod will be deployed in the default names
 The `vault-0` pod runs a Vault server in development mode. The `vault-agent-injector` pod performs the injection based on the annotations present or patched on a deployment.
 
 > [!NOTE]
-> Check the service type of `vault`; if it is set to NodePort/Cluster IP, you can change it to type LoadBalancer.
+> (Optional) Check the service type of `vault`; if it is set to NodePort/Cluster IP, you can change it to type LoadBalancer so you can access the Vault Web GUI.
 
 ```shell
 kubectl get svc
