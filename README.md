@@ -174,7 +174,7 @@ Name of the Vault docker image to use. This value overrides the default image co
 vault.hashicorp.com/agent-inject: 'true'
 ```
 
-When set to true, this instruct the `Vault Agent Injector pod` to automatically inject Vault Agent containers into the Pod that is being deployed which includes this annotation. This enables applications running in Kubernetes to seamlessly access secrets stored in HashiCorp Vault.
+When set to true, this instructs the `Vault Agent Injector pod` to automatically inject Vault Agent containers into the Pod being deployed, which includes this annotation. This enables applications running in Kubernetes to access secrets stored in HashiCorp Vault.
 
 ```
 vault.hashicorp.com/role: 'internal-app'
