@@ -212,6 +212,8 @@ vault.hashicorp.com/agent-inject-template-tls.key: |
 ```
 
 Same with above, this is used to rendering/writing a secret. The name of the template is any unique string after vault.hashicorp.com/agent-inject-template-, such as vault.hashicorp.com/agent-inject-template-tls.key. This should map to the same unique value provided in vault.hashicorp.com/agent-inject-secret-. For this case, I'm creating a secret/certificate on the path `pki/issue/2024-servers` with a common name of `myserver.example.com`. The template then extracts, the private key base64 data. See reference: [https://developer.hashicorp.com/vault/docs/agent-and-proxy/agent/template](https://developer.hashicorp.com/vault/docs/agent-and-proxy/agent/template). 
+> [!CAUTION]
+> The goal of this is to get the private key data and store it into a secret. I'm still checking/validating whether injecting this template again will create multiple certificates in the vault server.
 
 ```
 vault.hashicorp.com/secret-volume-path: /etc/secrets
