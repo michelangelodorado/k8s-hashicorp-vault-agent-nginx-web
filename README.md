@@ -163,6 +163,9 @@ kubectl get svc
 
 Access the NGINX Web Application using web browser `https://<EXTERNAL-IP>/` and you should see the vault generated certificate is used by the application.
 
+![image](https://github.com/michelangelodorado/k8s-hashicorp-vault-agent-nginx-web/assets/102953584/54cbf5db-8426-4b02-8078-51ccf1feea89)
+
+
 ## Notes on Vault Agent Injector Annotations
 
 Check the yaml file `nginx-vault.yaml`, you will see Vault agent annotations that was configured. Below are the descriptions of each annotation.
