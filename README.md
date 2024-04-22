@@ -114,7 +114,7 @@ Write out the policy named `internal-app` that enables the read and create capab
 ```shell
 vault policy write internal-app - <<EOF
 path "pki/issue/2024-servers" {
-   capabilities = ["read", "create"]
+   capabilities = ["read", "update"]
 }
 EOF
 ```
