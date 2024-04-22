@@ -35,13 +35,12 @@ Install the latest version of the Vault server running in development mode.
 ```
 
 > [!CAUTION]
-> This will deploy a single vault server in Dev mode. This is ideal for learning and demonstration environments to simplify the unsealing process but NOT recommended for a production environment.
+> This will deploy a single vault server in **Dev mode**. This is ideal for learning and demonstration environments to simplify the unsealing process but NOT recommended for a production environment.
 
 The Vault pod and Vault Agent Injector pod will be deployed in the default namespace.
 The `vault-0` pod runs a Vault server in development mode. The `vault-agent-injector` pod performs the injection based on the annotations present or patched on a deployment.
 
-> [!NOTE]
-> (Optional) Check the service type of `vault`; if it is set to NodePort/Cluster IP, you can change it to type LoadBalancer so you can access the Vault Web GUI.
+(Optional) You can change the service type of vault to type LoadBalancer so you can access the Vault GUI.
 
 ```shell
 kubectl get svc
