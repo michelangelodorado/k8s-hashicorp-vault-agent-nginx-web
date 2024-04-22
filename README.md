@@ -76,7 +76,7 @@ vault secrets tune -max-lease-ttl=87600h pki
 Generate the example.com root CA, give it an issuer name, and save its certificate in the file root_2024_ca.crt
 
 ```shell
-vault write -field=certificate pki/issue/2024-servers \
+vault write -field=certificate pki/root/generate/internal \
      common_name="example.com" \
      issuer_name="root-2024" \
      ttl=43800h
