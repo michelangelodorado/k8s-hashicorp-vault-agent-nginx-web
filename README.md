@@ -76,10 +76,10 @@ vault secrets tune -max-lease-ttl=87600h pki
 Generate the example.com root CA, give it an issuer name, and save its certificate in the file root_2024_ca.crt
 
 ```shell
-vault write -field=certificate pki/root/generate/internal \
+vault write -field=certificate pki/issue/2024-servers \
      common_name="example.com" \
      issuer_name="root-2024" \
-     ttl=87600h
+     ttl=87600h > root_ca_2024.crt
 ```
 
 Create a role for the root CA. Creating this role allows for specifying an issuer when necessary for the purposes of this scenario. This also provides a simple way to transition from one issuer to another by referring to it by name.
