@@ -34,6 +34,9 @@ Install the latest version of the Vault server running in development mode.
  helm install vault hashicorp/vault --set "server.dev.enabled=true"
 ```
 
+> [!CAUTION]
+> This will deploy a single vault server in Dev mode. This is ideal for learning and demonstration environments to simplify the unsealing process but NOT recommended for a production environment.
+
 The Vault pod and Vault Agent Injector pod will be deployed in the default namespace.
 The `vault-0` pod runs a Vault server in development mode. The `vault-agent-injector` pod performs the injection based on the annotations present or patched on a deployment.
 
